@@ -1,0 +1,25 @@
+.bg-smartlion {
+     background-color: #e1dcc9;
+     /* background-color: #EFB758;  */
+     /* background-color: #17395C; 
+     background-color: #C24229;  */
+
+     /* background: rgb(225,220,201);
+     background: linear-gradient(180deg, rgba(225,220,201,1) 0%, rgba(239,183,88,1) 200%); */
+
+     /* background: rgb(239,183,88);
+     background: linear-gradient(180deg, rgba(239,183,88,1) 0%, rgba(225,220,201,1) 94%); */
+
+     /* background: rgb(239,183,88);
+     background: linear-gradient(180deg, rgba(239,183,88,1) 10%, rgba(194,66,41,1) 95%); */
+
+    color: #C24229;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #305c88;
+}

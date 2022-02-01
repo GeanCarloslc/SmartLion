@@ -1,0 +1,12 @@
+.bg-smartlion {
+    
+    /* background-color: #e1dcc9;  */
+    /* background: rgb(239,183,88);
+    background: linear-gradient(227deg, rgba(239,183,88,1) 24%, rgba(225,220,201,1) 94%); */
+
+    background: rgb(239,183,88);
+    background: linear-gradient(227deg, rgba(239,183,88,1) 100%, rgba(225,220,201,1) 94%);
+
+    /* background: rgb(225,220,201);
+    background: linear-gradient(227deg, rgba(225,220,201,1) 0%, rgba(239,183,88,1) 94%); */
+}
