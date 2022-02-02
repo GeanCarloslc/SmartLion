@@ -9,18 +9,18 @@ import { Cliente } from '../../entidades/cliente';
 
 
 @Component({
-  selector: 'app-cliente-detalhes',
-  templateUrl: './cliente-detalhes.component.html',
-  styleUrls: ['./cliente-detalhes.component.css']
+  selector: 'app-produto-detalhes',
+  templateUrl: './produto-detalhes.component.html',
+  styleUrls: ['./produto-detalhes.component.css']
 })
-export class ClienteDetalhesComponent implements OnInit {
+export class ProdutoDetalhesComponent implements OnInit {
 
 
   @Input() clienteSelecionado: Cliente
   @Output() resposta: EventEmitter<any> = new EventEmitter();
 
   //Variaveis
-  titulo: string = "Cliente Detalhes"
+  titulo: string = "Produto Detalhes"
 
   //Mascaras
   telefone = "(00) 00000-0000"
@@ -55,7 +55,6 @@ export class ClienteDetalhesComponent implements OnInit {
   }
 
   excluirCliente() {
-
     this.service.excluirCliente(this.clienteSelecionado.id).subscribe(resposta => {
       if (resposta != null) {
         this.toastr.success('Cliente excluído com sucesso!', 'Atenção!');

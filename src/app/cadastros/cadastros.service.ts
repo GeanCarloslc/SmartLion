@@ -21,15 +21,15 @@ export class CadastrosService {
         return this.http.post<Cliente>(this.url + "/salvarCliente", cliente);
     }
 
-    populaClientes(): Observable<Cliente[]> {
-        return this.http.get<any>(this.url + "/populaClientes");
-    }
+    // populaClientes(): Observable<Cliente[]> {
+    //     return this.http.get<any>(this.url + "/populaClientes");
+    // }
 
     pesquisaFiltrosClientes(cliente: Cliente): Observable<Cliente[]> {
         return this.http.post<any>(this.url + "/pesquisaFiltrosClientes", cliente);
     }
 
-    public deleteEmployee(employeeId: number): Observable<void> {
-        return this.http.delete<void>(`${this.url}/delete/${employeeId}`);
+    public excluirCliente(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.url}/excluirCliente/${id}`);
     }
 }

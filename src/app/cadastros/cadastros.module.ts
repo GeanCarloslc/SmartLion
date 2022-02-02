@@ -5,10 +5,12 @@ import { CadastrosRoutingModule } from './cadastros-routing.module';
 import { ClientesSelecaoComponent } from './clientes-selecao/clientes-selecao.component';
 import { ClienteDetalhesComponent } from './clientes-selecao/cliente-detalhes/cliente-detalhes.component';
 import { ProdutosSelecaoComponent } from './produtos-selecao/produtos-selecao.component';
+import { ProdutoDetalhesComponent } from './produtos-selecao/produto-detalhes/produto-detalhes.component';
 import { ComponentModule } from '../components/component.module';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     ClientesSelecaoComponent,
     ClienteDetalhesComponent,
     ProdutosSelecaoComponent,
+    ProdutoDetalhesComponent
 
   ],
   imports: [

@@ -33,20 +33,7 @@ export class ClientesSelecaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.populaClientes()
-  }
-
-  populaClientes() {
-    this.service.populaClientes().subscribe(resposta => {
-
-      if (resposta != null) {
-        this.listaClientes = resposta
-      } else {
-        this.toastr.error('Algo deu errado', 'Atenção!');
-      }
-
-    }
-    )
+    this.pesquisaFiltros()
   }
 
   pesquisaFiltros() {
@@ -75,7 +62,7 @@ export class ClientesSelecaoComponent implements OnInit {
 
   voltar() {
     this.sessao = true
-    this.populaClientes()
+    this.pesquisaFiltros()
   }
 
 }

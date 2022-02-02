@@ -4,6 +4,7 @@ import { ClientesSelecaoComponent } from './clientes-selecao/clientes-selecao.co
 import { ProdutosSelecaoComponent } from './produtos-selecao/produtos-selecao.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ClienteDetalhesComponent } from './clientes-selecao/cliente-detalhes/cliente-detalhes.component';
+import { ProdutoDetalhesComponent } from './produtos-selecao/produto-detalhes/produto-detalhes.component';
 
 
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'clientesSelecao', component: ClientesSelecaoComponent },
   { path: 'ClienteDetalhes', component: ClienteDetalhesComponent},
   { path: 'produtosSelecao', component: ProdutosSelecaoComponent},
+  { path: 'produtoDetalhe', component: ProdutoDetalhesComponent},
 
   
 ];
