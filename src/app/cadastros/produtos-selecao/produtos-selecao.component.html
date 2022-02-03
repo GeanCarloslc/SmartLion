@@ -6,36 +6,25 @@
 
   <div class="col-md-12 box-shadow">
     <div class="row">
+
       <div class="col-md-4 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteFiltro.deCliente}}
-          [(ngModel)]="clienteFiltro.deCliente">
-        <label class="pr-2 form-label" style="font-size: 13px;">Nome</label>
+        <input class="col-md-12 textbox" type="text" value={{produtoFiltro.id}}
+          [(ngModel)]="produtoFiltro.id">
+        <label class="pr-2 form-label" style="font-size: 13px;">Código</label>
       </div>
 
-      <div class="col-md-2 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteFiltro.nuCpfCnpj}}
-          [(ngModel)]="clienteFiltro.nuCpfCnpj">
-        <label class="pr-2 form-label" style="font-size: 13px;">CPF / CNPJ</label>
-      </div>
-
-      <div class="col-md-1 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteFiltro.dePais}}
-          [(ngModel)]="clienteFiltro.dePais">
-        <label class="pr-2 form-label" style="font-size: 13px;">País</label>
-      </div>
-
-      <div class="col-md-2 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteFiltro.deEstado}}
-          [(ngModel)]="clienteFiltro.deEstado">
-        <label class="pr-2 form-label" style="font-size: 13px;">Estado</label>
+      <div class="col-md-4 form">
+        <input class="col-md-12 textbox" type="text" value={{produtoFiltro.deProduto}}
+          [(ngModel)]="produtoFiltro.deProduto">
+        <label class="pr-2 form-label" style="font-size: 13px;">Produto</label>
       </div>
 
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-9 form">
-            <input class="col-md-12 textbox" type="text" value={{clienteFiltro.deCidade}}
-              [(ngModel)]="clienteFiltro.deCidade">
-            <label class="pr-2 form-label" style="font-size: 13px;">Cidade</label>
+            <input class="col-md-12 textbox" type="text" value={{produtoFiltro.deMarca}}
+              [(ngModel)]="produtoFiltro.deMarca">
+            <label class="pr-2 form-label" style="font-size: 13px;">Marca</label>
           </div>
           <div class="col-md-3">
             <button type="button" class="btn btn-info float-right ml-2 mt-3" title="Pesquisar" (click)="pesquisaFiltros()">
@@ -50,32 +39,25 @@
       <thead>
         <tr>
           <th></th>
-          <th scope="col">Nome</th>
-          <th scope="col">CPF/CNPJ</th>
-          <th scope="col">PJ</th>
-          <th scope="col">País</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Cidade</th>
-          <th scope="col">Telefone</th>   
+          <th scope="col">Código</th>
+          <th scope="col">Produto</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Quantidade</th> 
+          <th scope="col">Valor Unitário</th> 
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let clienteSelecionado of listaClientes" (dblclick)="selecionaCliente(clienteSelecionado)">
+        <tr *ngFor="let produtoSelecionado of listaProdutos" (dblclick)="selecionaProduto(produtoSelecionado)">
           <td>
-            <button class="btn btn-rounded btn-info" title="Editar" (click)="selecionaCliente(clienteSelecionado)">
+            <button class="btn btn-rounded btn-info" title="Editar" (click)="selecionaProduto(produtoSelecionado)">
               <i class="fas fa-pen"></i>
             </button>
           </td>
-          <td>{{clienteSelecionado.deCliente}}</td>
-          <td *ngIf="!clienteSelecionado.isPessoaJuridica">{{clienteSelecionado.nuCpfCnpj | mask: cpf}}</td>
-          <td *ngIf="clienteSelecionado.isPessoaJuridica">{{clienteSelecionado.nuCpfCnpj | mask: cnpj}}</td>
-          <td>
-            {{clienteSelecionado.isPessoaJuridica == true ? "Sim" : "Não"}}
-          </td>
-          <td>{{clienteSelecionado.dePais}}</td>
-          <td>{{clienteSelecionado.deEstado}}</td>
-          <td>{{clienteSelecionado.deCidade}}</td>
-          <td>{{clienteSelecionado.nuTelefone | mask: telefone}}</td>
+          <td>{{produtoSelecionado.id}}</td>
+          <td>{{produtoSelecionado.deProduto}}</td>
+          <td>{{produtoSelecionado.deMarca}}</td>
+          <td>{{produtoSelecionado.qtProduto}}</td>
+          <td class="text-right">{{produtoSelecionado.vlUnitario | currency : 'BRL'}}</td>
         </tr>
 
       </tbody>
@@ -85,7 +67,7 @@
     <div class="row">
       <div class="col-md-12 ">
 
-        <button type="button" class="btn btn-success float-right mt-4" (click)="incluirCliente()">
+        <button type="button" class="btn btn-success float-right mt-4" (click)="incluirProduto()">
           <i class="fas fa-plus"></i>
           Incluir
         </button>
@@ -96,6 +78,6 @@
 
 </div>
 
-<app-cliente-detalhes *ngIf="!sessao" [clienteSelecionado]="clienteSelecionado" (resposta)="voltar()">
+<app-produto-detalhes *ngIf="!sessao" [produtoSelecionado]="produtoSelecionado" (resposta)="voltar()">
 
-</app-cliente-detalhes>
+</app-produto-detalhes>

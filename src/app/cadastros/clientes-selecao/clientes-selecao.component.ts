@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CadastrosService } from '../cadastros.service';
-import { Cliente } from '../entidades/cliente';
+import { Cliente } from '../entities/cliente';
 
 
 @Component({

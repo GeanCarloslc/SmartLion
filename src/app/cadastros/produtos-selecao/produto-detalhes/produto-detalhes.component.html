@@ -5,83 +5,38 @@
   </div>
 
   <div class="col-md-12 box-shadow">
-    <div class="row">
-      <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value={{clienteSelecionado.isPessoaJuridica}}
-          [(ngModel)]="clienteSelecionado.isPessoaJuridica" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Pessoa Jurídica
-        </label>
-      </div>
-    </div>
 
     <div class="row mt-4">
+
+      <div class="col-md-4 form">
+        <input class="col-md-12 textbox text-right" type="text" value={{produtoSelecionado.id}}
+          [(ngModel)]="produtoSelecionado.id" >
+        <label class="pr-2 form-label" style="font-size: 13px;">Código</label>
+      </div>
+
       <div class="col-md-6 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deCliente}}
-          [(ngModel)]="clienteSelecionado.deCliente" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Nome</label>
+        <input class="col-md-12 textbox" type="text" value={{produtoSelecionado.deProduto}}
+          [(ngModel)]="produtoSelecionado.deProduto" >
+        <label class="pr-2 form-label" style="font-size: 13px;">Produto</label>
       </div>
 
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" [mask]="clienteSelecionado.isPessoaJuridica == true ? cnpj : cpf" value={{clienteSelecionado.nuCpfCnpj}}
-          [(ngModel)]="clienteSelecionado.nuCpfCnpj">
-        <label class="pr-2 form-label" style="font-size: 13px;">{{clienteSelecionado.isPessoaJuridica == true ? 'CNPJ':
-          'CPF'}}</label>
+      <div class="col-md-2 form">
+        <input class="col-md-12 textbox" type="text"  value={{produtoSelecionado.deMarca}}
+          [(ngModel)]="produtoSelecionado.deMarca" >
+        <label class="pr-2 form-label" style="font-size: 13px;">Marca</label>
       </div>
 
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" [mask]="cep" value={{clienteSelecionado.nuCep}}
-          [(ngModel)]="clienteSelecionado.nuCep" >
-        <label class="pr-2 form-label" style="font-size: 13px;">CEP</label>
+      <div class="col-md-2 form">
+        <input class="col-md-12 textbox text-right pr-2" type="number" value={{produtoSelecionado.qtProduto}}
+          [(ngModel)]="produtoSelecionado.qtProduto" >
+        <label class="pr-2 form-label" style="font-size: 13px;">Quantidade</label>
       </div>
 
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.dePais}}
-          [(ngModel)]="clienteSelecionado.dePais" >
-        <label class="pr-2 form-label" style="font-size: 13px;">País</label>
-      </div>
-
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deEstado}}
-          [(ngModel)]="clienteSelecionado.deEstado" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Estado</label>
-      </div>
-
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deCidade}}
-          [(ngModel)]="clienteSelecionado.deCidade" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Cidade</label>
-      </div>
-
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deBairro}}
-          [(ngModel)]="clienteSelecionado.deBairro" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Bairro</label>
-      </div>
-
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" [mask]="telefone"  value={{clienteSelecionado.nuTelefone}}
-          [(ngModel)]="clienteSelecionado.nuTelefone" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Telefone</label>
-      </div>
-      
-      <div class="col-md-6 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deRua}}
-          [(ngModel)]="clienteSelecionado.deRua" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Rua</label>
-      </div>
-
-      <div class="col-md-3 form">
-        <input class="col-md-12 textbox" type="text" value={{clienteSelecionado.deReferencia}}
-          [(ngModel)]="clienteSelecionado.deReferencia" >
-        <label class="pr-2 form-label" style="font-size: 13px;">Referência</label>
-      </div>
-
-      <div class="col-md-12 form">
-        <textarea class="col-md-12 textbox" style="height: 75px;" id="story" name="story"
-                  rows="5" cols="33">
-        </textarea>
-        <label class="pr-2 form-label" style="font-size: 13px;">Obs</label>
+      <div class="col-md-2 form ">
+        <input class="col-md-12 textbox text-right pr-2" type="number" 
+        value={{produtoSelecionado.vlUnitario}}
+          [(ngModel)]="produtoSelecionado.vlUnitario" >
+        <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
       </div>
     </div>
 
@@ -97,7 +52,7 @@
           <i class="far fa-save"></i>
         </button>
 
-        <button type="button" class="btn btn-danger float-right" title="Excluir" (click)="excluirCliente()">
+        <button type="button" class="btn btn-danger float-right" title="Excluir" (click)="excluirProduto()">
           <i class="far fa-trash-alt"></i>
         </button>
 

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CadastrosService } from '../cadastros.service';
-import { Cliente } from '../entidades/cliente';
+import { Produto } from '../entities/produto';
 
 
 @Component({
@@ -12,9 +12,9 @@ import { Cliente } from '../entidades/cliente';
 })
 export class ProdutosSelecaoComponent implements OnInit {
 
-  clienteFiltro: Cliente = new Cliente()
-  clienteSelecionado: Cliente = new Cliente()
-  listaClientes: Cliente[] = []
+  produtoFiltro: Produto = new Produto()
+  produtoSelecionado: Produto = new Produto()
+  listaProdutos: Produto[] = []
 
   //Variaveis
   titulo: string = "Produtos Seleção"
@@ -38,10 +38,10 @@ export class ProdutosSelecaoComponent implements OnInit {
 
 
   pesquisaFiltros() {
-    this.service.pesquisaFiltrosClientes(this.clienteFiltro).subscribe(resposta => {
+    this.service.pesquisaFiltrosProdutos(this.produtoFiltro).subscribe(resposta => {
 
       if (resposta != null) {
-        this.listaClientes = resposta
+        this.listaProdutos = resposta
 
       } else {
         this.toastr.error('Algo deu errado', 'Atenção!');
@@ -49,13 +49,13 @@ export class ProdutosSelecaoComponent implements OnInit {
     })
   }
 
-  selecionaCliente(clienteSelecionado: Cliente) {
-    this.clienteSelecionado = clienteSelecionado
+  selecionaProduto(produtoSelecionado: Produto) {
+    this.produtoSelecionado = produtoSelecionado
     this.sessao = false
   }
 
-  incluirCliente() {
-    this.clienteSelecionado = new Cliente
+  incluirProduto() {
+    this.produtoSelecionado = new Produto
     this.sessao = false
   }
 

@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 import { CadastrosService } from '../../cadastros.service';
-import { Cliente } from '../../entidades/cliente';
+import { Produto } from '../../entities/produto';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { Cliente } from '../../entidades/cliente';
 export class ProdutoDetalhesComponent implements OnInit {
 
 
-  @Input() clienteSelecionado: Cliente
+  @Input() produtoSelecionado: Produto
   @Output() resposta: EventEmitter<any> = new EventEmitter();
 
   //Variaveis
@@ -41,10 +41,10 @@ export class ProdutoDetalhesComponent implements OnInit {
 
   salvar() {
 
-    this.service.salvarCliente(this.clienteSelecionado).subscribe(resposta => {
+    this.service.salvarProduto(this.produtoSelecionado).subscribe(resposta => {
 
       if (resposta != null) {
-        this.toastr.success('Cliente Salvo com sucesso!', 'Atenção!');
+        this.toastr.success('Produto Salvo com sucesso!', 'Atenção!');
         setTimeout(() => {
           this.voltar()
         }, 2);
@@ -54,20 +54,21 @@ export class ProdutoDetalhesComponent implements OnInit {
     })
   }
 
-  excluirCliente() {
-    this.service.excluirCliente(this.clienteSelecionado.id).subscribe(resposta => {
-      if (resposta != null) {
-        this.toastr.success('Cliente excluído com sucesso!', 'Atenção!');
+  excluirProduto() {
+    this.service.excluirProduto(this.produtoSelecionado.id).subscribe(resposta => {
+
+        this.toastr.success('Produto excluído com sucesso!', 'Atenção!');
         setTimeout(() => {
           this.voltar()
         }, 2);
-      } else {
-        this.toastr.error('Algo deu errado', 'Atenção!');
-      }
+
     })
   }
 
   voltar(back?: any) {
     this.resposta.emit(back)
   }
+
+
+
 }

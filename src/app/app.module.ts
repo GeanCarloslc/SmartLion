@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+
 import { HttpClientModule } from '@angular/common/http'
 import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,10 @@ import { CadastrosModule } from './cadastros/cadastros.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask';
+
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -39,6 +44,7 @@ import { NgxMaskModule } from 'ngx-mask';
     
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     CadastrosService
 
   ],

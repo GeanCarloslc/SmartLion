@@ -65,3 +65,12 @@
     font-family: teko; 
     font-size: 30px;
   }
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+}
+
+input[type=number] { 
+   -moz-appearance: textfield;
+    appearance: textfield;
+}
