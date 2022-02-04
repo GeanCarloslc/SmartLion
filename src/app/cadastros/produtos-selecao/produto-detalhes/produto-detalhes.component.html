@@ -38,6 +38,18 @@
           [(ngModel)]="produtoSelecionado.vlUnitario" >
         <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
       </div>
+
+      <div class="col-md-2 form ">
+        <select name="select" class="col-md-12 textbox">
+          <option 
+          value={{validaSelect(categoriaSelecionado.id)}}
+          *ngFor="let categoriaSelecionado of listaCategorias">
+          {{categoriaSelecionado.deCategoria}}
+        </option>
+        </select>
+        <label class="pr-2 form-label" style="font-size: 13px;">Categoria</label>
+      </div>
+
     </div>
 
     <div class="row">

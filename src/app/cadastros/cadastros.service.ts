@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Cliente } from "./entities/cliente";
 import { Produto } from "./entities/produto";
+import { Categoria } from "./entities/categoria";
 
 @Injectable({
 
@@ -17,10 +18,6 @@ export class CadastrosService {
     constructor(
         private http: HttpClient
     ) { }
-
-    // populaClientes(): Observable<Cliente[]> {
-    //     return this.http.get<any>(this.url + "/populaClientes");
-    // }
 
     salvarCliente(cliente: Cliente): Observable<Cliente> {
         return this.http.post<Cliente>(this.urlCliente + "/salvarCliente", cliente);
@@ -38,6 +35,10 @@ export class CadastrosService {
         return this.http.post<Produto>(this.urlProduto + "/salvarProduto", produto);
     }
 
+    populaCategoria(): Observable<Categoria[]> {
+        return this.http.get<any>(this.urlProduto + "/populaCategoria");
+    }
+    
     pesquisaFiltrosProdutos(produto: Produto): Observable<Produto[]> {
         return this.http.post<any>(this.urlProduto + "/pesquisaFiltrosProdutos", produto);
     }

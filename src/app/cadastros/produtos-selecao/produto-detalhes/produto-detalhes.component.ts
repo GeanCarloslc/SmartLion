@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 import { CadastrosService } from '../../cadastros.service';
+import { Categoria } from '../../entities/categoria';
 import { Produto } from '../../entities/produto';
 
 
@@ -18,6 +19,7 @@ export class ProdutoDetalhesComponent implements OnInit {
 
   @Input() produtoSelecionado: Produto
   @Output() resposta: EventEmitter<any> = new EventEmitter();
+  listaCategorias: Categoria [] = []
 
   //Variaveis
   titulo: string = "Produto Detalhes"
@@ -36,7 +38,7 @@ export class ProdutoDetalhesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.populaCategoria()
   }
 
   salvar() {
@@ -69,6 +71,21 @@ export class ProdutoDetalhesComponent implements OnInit {
     this.resposta.emit(back)
   }
 
+  populaCategoria() {
+    this.service.populaCategoria().subscribe(resposta => {
+
+      if (resposta != null) {
+        this.listaCategorias = resposta
+
+      } else {
+        this.toastr.error('Algo deu errado', 'Atenção!');
+      }
+    })
+  }
+
+  validaSelect(cdCategoria: string){
+    this.produtoSelecionado.cdCategoria = cdCategoria;
+  }
 
 
 }
