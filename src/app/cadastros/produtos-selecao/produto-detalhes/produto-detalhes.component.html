@@ -33,16 +33,14 @@
       </div>
 
       <div class="col-md-2 form ">
-        <input class="col-md-12 textbox text-right pr-2" type="number" 
-        value={{produtoSelecionado.vlUnitario}}
-          [(ngModel)]="produtoSelecionado.vlUnitario" >
+        <input class="col-md-12 textbox text-right pr-2" type="number"  
+        value={{produtoSelecionado.vlUnitario}} [(ngModel)]="produtoSelecionado.vlUnitario" >
         <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
       </div>
 
       <div class="col-md-2 form ">
         <select name="select" class="col-md-12 textbox">
           <option 
-          value={{validaSelect(categoriaSelecionado.id)}}
           *ngFor="let categoriaSelecionado of listaCategorias">
           {{categoriaSelecionado.deCategoria}}
         </option>

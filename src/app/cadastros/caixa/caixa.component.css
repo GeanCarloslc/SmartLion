@@ -1,0 +1,91 @@
+.form {
+    position: relative;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.textbox {
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    padding: 8px;
+    color: black;
+    height: 33px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.form-label {
+    position: absolute;
+    top: 0.1rem;
+    left: 1.5rem;
+    color: black;
+    background: white;
+    padding-left: 1px;
+    cursor: text;
+}
+
+.textbox:focus {
+    border: 1px solid #7c7e7e;
+}
+
+.textbox:focus~.form-label {
+    font-size: 10px;
+    background: white;
+}
+
+.btn {
+    height: 32px;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.btn-rounded {
+    border-radius: 25px;
+    height: 22px;
+    width: 25px;
+    font-size: 9px;
+    padding: 4px;
+}
+
+.box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.box-shadow-title {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.font-titulo{
+    font-family: teko; 
+    font-size: 30px;
+  }
+
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+}
+
+input[type=number] { 
+   -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]:disabled{
+    
+    border: 1px solid #C24229;
+
+
+    /* background-color: #EFB758;  */
+    /* background-color: #17395C; 
+    background-color: #C24229;  */
+
+
+  }
+
+

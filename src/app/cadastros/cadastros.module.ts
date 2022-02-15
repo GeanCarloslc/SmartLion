@@ -10,6 +10,7 @@ import { ComponentModule } from '../components/component.module';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { FormsModule } from '@angular/forms';
+import { CaixaComponent } from './caixa/caixa.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     ClientesSelecaoComponent,
     ClienteDetalhesComponent,
     ProdutosSelecaoComponent,
-    ProdutoDetalhesComponent
+    ProdutoDetalhesComponent,
+    CaixaComponent,
 
   ],
   imports: [
@@ -32,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     ClientesSelecaoComponent,
     ClienteDetalhesComponent,
     ProdutosSelecaoComponent,
+    CaixaComponent,
     
   ]
 })
