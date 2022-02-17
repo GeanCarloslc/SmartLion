@@ -15,6 +15,7 @@ export class CaixaComponent implements OnInit {
   produtoFiltro: Produto = new Produto()
   produtosSelecionado: Produto = new Produto()
   listaProdutos: Produto[] = []
+  listaPedidos:[] = []
 
   //Variaveis
   titulo: string = "Frente de Caixa"
@@ -49,7 +50,7 @@ export class CaixaComponent implements OnInit {
     })
   }
 
-  selecionaProduto(produtoSelecionado: Produto) {
+  editarPedido(produtoSelecionado: any) {
     this.produtosSelecionado = produtoSelecionado
     this.sessao = false
   }

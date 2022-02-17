@@ -5,66 +5,86 @@
   </div>
 
   <div class="col-md-12 box-shadow">
+
     <div class="row">
-
-      <div class="col-md-4 form">
-        <input class="col-md-12 textbox" type="text" value={{produtoFiltro.id}}
-          [(ngModel)]="produtoFiltro.id">
-        <label class="pr-2 form-label" style="font-size: 13px;">Código</label>
-      </div>
-
-      <div class="col-md-2 form">
-        <input class="col-md-12 textbox" type="text" value={{produtoFiltro.qtProduto}}
-          [(ngModel)]="produtoFiltro.qtProduto">
-        <label class="pr-2 form-label" style="font-size: 13px;">Quantidade</label>
-      </div>
-
-      <div class="col-md-3">
+      <div class="col-md-9">
         <div class="row">
-          <div class="col-md-9 form">
-            <input class="col-md-12 textbox text-right pr-2" type="number" 
-            value={{produtoFiltro.vlUnitario}}
-              [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
-            <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
+          <div class="col-md-7 form">
+            <input class="col-md-12 textbox" type="text" value={{produtoFiltro.id}}
+              [(ngModel)]="produtoFiltro.id">
+            <label class="pr-2 form-label" style="font-size: 13px;">Código</label>
           </div>
+    
+          <div class="col-md-2 form">
+            <input class="col-md-12 textbox" type="text" value={{produtoFiltro.qtProduto}}
+              [(ngModel)]="produtoFiltro.qtProduto">
+            <label class="pr-2 form-label" style="font-size: 13px;">Quantidade</label>
+          </div>
+    
           <div class="col-md-3">
-            <button type="button" class="btn btn-info float-right ml-2 mt-3" title="Pesquisar" (click)="pesquisaFiltros()">
-              <i class="fas fa-search"></i>
-            </button>
+            <div class="row">
+              <div class="col-md-9 form">
+                <input class="col-md-12 textbox text-right pr-2" type="number" 
+                value={{produtoFiltro.vlUnitario}}
+                  [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
+                <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-info float-right ml-2 mt-3" title="Calcular" (click)="pesquisaFiltros()">
+                  <i class="fas fa-calculator"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <table class="table mt-2 m-2">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Código</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Quantidade</th> 
+                <th scope="col">Valor Unitário</th> 
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td>
+                  <button class="btn btn-rounded btn-info" title="Editar" (click)="editarPedido(pedido)">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                </td>
+                <td>{{pedido.id}}</td>
+                <td>{{pedido.deProduto}}</td>
+                <td>{{pedido.deCategoria}}</td>
+                <td>{{pedido.deMarca}}</td>
+                <td class="text-right">{{pedido.qtProduto}}</td>
+                <td class="text-right">{{pedido.vlUnitario | currency : 'BRL'}}</td>
+              </tr>
+              <tr>
+                <td class="text-right" colspan="6"><b>Total:</b></td>
+                <td class="text-right"> 0,00</td>
+              </tr>
+      
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-3 px-5">
+        <div class="row">
+          <div class="col-md-12 box-shadow-produto" style="height: 200px;">
+
+            <!-- Imagem produto -->
+            
           </div>
         </div>
       </div>
     </div>
 
-    <table class="table mt-5">
-      <thead>
-        <tr>
-          <th></th>
-          <th scope="col">Código</th>
-          <th scope="col">Produto</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Marca</th>
-          <th scope="col">Quantidade</th> 
-          <th scope="col">Valor Unitário</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let produtoSelecionado of listaProdutos" (dblclick)="selecionaProduto(produtoSelecionado)">
-          <td>
-            <button class="btn btn-rounded btn-info" title="Editar" (click)="selecionaProduto(produtoSelecionado)">
-              <i class="fas fa-pen"></i>
-            </button>
-          </td>
-          <td>{{produtoSelecionado.id}}</td>
-          <td>{{produtoSelecionado.deProduto}}</td>
-          <td>{{produtoSelecionado.deCategoria}}</td>
-          <td>{{produtoSelecionado.deMarca}}</td>
-          <td>{{produtoSelecionado.qtProduto}}</td>
-          <td class="text-right">{{produtoSelecionado.vlUnitario | currency : 'BRL'}}</td>
-        </tr>
 
-      </tbody>
-    </table>
 
 
     <div class="row">
@@ -72,7 +92,7 @@
 
         <button type="button" class="btn btn-success float-right mt-4" (click)="incluirProduto()">
           <i class="fas fa-plus"></i>
-          Incluir
+          
         </button>
 
       </div>
