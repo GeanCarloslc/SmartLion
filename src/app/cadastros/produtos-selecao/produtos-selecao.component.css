@@ -65,3 +65,32 @@
     font-family: teko; 
     font-size: 30px;
   }
+
+
+
+
+
+  .rounded2l {
+    border-radius: 25px 0px 0px 25px;
+  }
+  
+  .rounded2r {
+    border-radius: 0px 25px 25px 0px;
+  }
+  
+  .rounded4 {
+    border-radius: 25px;
+  }
+  
+  input[type=file] {
+    display: none;
+    }
+    
+    .file-upload {
+    margin: 1rem;
+    border-radius: 25px;
+    background-color: #006600;
+    color: #fff;
+    padding: 0.5rem;
+    cursor: pointer;
+    }

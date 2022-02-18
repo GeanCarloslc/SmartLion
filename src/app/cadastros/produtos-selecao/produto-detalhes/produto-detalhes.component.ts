@@ -87,5 +87,16 @@ export class ProdutoDetalhesComponent implements OnInit {
     this.produtoSelecionado.cdCategoria = cdCategoria;
   }
 
+  inputFileChange(event){
+
+    if(event.target.files && event.target.files[0]){
+      const foto = event.target.files[0]
+
+      const formData = new FormData()
+      formData.append('foto', foto)
+
+    }
+
+  }
 
 }
