@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CadastrosService } from '../../cadastros.service';
 import { Categoria } from '../../entities/categoria';
 import { Produto } from '../../entities/produto';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,6 +25,11 @@ export class ProdutoDetalhesComponent implements OnInit {
   //Variaveis
   titulo: string = "Produto Detalhes"
 
+
+  base64: string = "Base64..."
+  fileSelected?: Blob
+  imageUrl: string = ''
+
   //Mascaras
   telefone = "(00) 00000-0000"
   cep = "00000-000"
@@ -34,6 +40,7 @@ export class ProdutoDetalhesComponent implements OnInit {
 
     private service: CadastrosService,
     private toastr: ToastrService,
+    private sant: DomSanitizer
 
   ) { }
 
@@ -97,6 +104,11 @@ export class ProdutoDetalhesComponent implements OnInit {
 
     }
 
+  }
+
+  onSelectNewFile(files: FileList){
+    this.fileSelected = files[0]
+    this.imageUrl = this.sant.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileSelected)) as string
   }
 
 }

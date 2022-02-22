@@ -7,6 +7,7 @@ export class Produto {
     deCategoria: string
     qtProduto: number
     vlUnitario: number
+    imProduto: string
     dtAtualizacao: Date
 
 }

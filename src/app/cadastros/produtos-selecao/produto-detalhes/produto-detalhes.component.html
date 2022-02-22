@@ -21,7 +21,7 @@
             <label class="pr-2 form-label" style="font-size: 13px;">Produto</label>
           </div>
     
-          <div class="col-md-2 form">
+          <div class="col-md-4 form">
             <input class="col-md-12 textbox" type="text"  value={{produtoSelecionado.deMarca}}
               [(ngModel)]="produtoSelecionado.deMarca" >
             <label class="pr-2 form-label" style="font-size: 13px;">Marca</label>
@@ -39,7 +39,7 @@
             <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
           </div>
     
-          <div class="col-md-2 form ">
+          <div class="col-md-4 form ">
             <select name="select" class="col-md-12 textbox">
               <option 
               *ngFor="let categoriaSelecionado of listaCategorias">
@@ -53,18 +53,27 @@
 
       <div class="col-md-2 px-4">
         <div class="row">
-          <div class="col-md-12 box-shadow-produto ml-1" style="height: 150px;">
+          <div class="col-md-12 box-shadow-produto p-1" style="height: 150px;">
 
             <!-- Imagem produto -->
 
             <!-- <span class="btn btn-rounded btn-info hiddenFileInput" style="margin-top: 110px">
             
-                <input type="file" style="border-radius: 50px;" name="theFile" title="Upload"  visbility="hidden"/>
+               
           
             </span> -->
 
+            
+            <img *ngIf="imageUrl != null && imageUrl != ''" class="w-100 h-100" style="border-radius: 25px;" [src]="imageUrl" alt="1">
+
+
+            <img *ngIf="imageUrl == null || imageUrl == ''" class="w-100 h-100" style="border-radius: 25px;" src="../../../../assets/images/no-image.jpg" alt="2">
+
 
           </div>
+        </div>
+        <div class="row mt-2">
+          <input type="file" id="file" name="image/*"  (change)="onSelectNewFile($event.target?.files)"/>
         </div>
       </div>
      
