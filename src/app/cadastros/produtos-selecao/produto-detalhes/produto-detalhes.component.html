@@ -64,16 +64,15 @@
             </span> -->
 
             
-            <img *ngIf="imageUrl != null && imageUrl != ''" class="w-100 h-100" style="border-radius: 25px;" [src]="imageUrl" alt="1">
-
-
-            <img *ngIf="imageUrl == null || imageUrl == ''" class="w-100 h-100" style="border-radius: 25px;" src="../../../../assets/images/no-image.jpg" alt="2">
+            <!-- <img *ngIf="myimage != null" class="w-100 h-100" style="border-radius: 25px;" [src]="myimage | async">
+            <img *ngIf="myimage == null" class="w-100 h-100" style="border-radius: 25px;" src="../../../../assets/images/no-image.jpg" alt="2"> -->
 
 
           </div>
         </div>
         <div class="row mt-2">
-          <input type="file" id="file" name="image/*"  (change)="onSelectNewFile($event.target?.files)"/>
+          <!-- <input type="file" id="file" name="image/*"  (change)="onSelectNewFile($event.target?.files)"/> -->
+          <input type="file" id="file" name="image/*"  (change)="onChange($event)"/>
         </div>
       </div>
      

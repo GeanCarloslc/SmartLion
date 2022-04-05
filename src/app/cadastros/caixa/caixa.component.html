@@ -7,18 +7,25 @@
   <div class="col-md-12 box-shadow">
 
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-10">
         <div class="row">
-          <div class="col-md-7 form">
+          <div class="col-md-5 form">
             <input class="col-md-12 textbox" type="text" value={{produtoFiltro.id}}
               [(ngModel)]="produtoFiltro.id">
-            <label class="pr-2 form-label" style="font-size: 13px;">Código</label>
+            <label class="pr-2 form-label" style="font-size: 13px;">Código de Barras</label>
           </div>
     
           <div class="col-md-2 form">
             <input class="col-md-12 textbox" type="text" value={{produtoFiltro.qtProduto}}
               [(ngModel)]="produtoFiltro.qtProduto">
             <label class="pr-2 form-label" style="font-size: 13px;">Quantidade</label>
+          </div>
+
+          <div class="col-md-2 form">
+            <input class="col-md-12 textbox text-right pr-2" type="number" 
+            value={{produtoFiltro.vlUnitario}}
+              [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
+            <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
           </div>
     
           <div class="col-md-3">
@@ -27,7 +34,7 @@
                 <input class="col-md-12 textbox text-right pr-2" type="number" 
                 value={{produtoFiltro.vlUnitario}}
                   [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
-                <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
+                <label class="pr-2 form-label" style="font-size: 13px;">Total do Item</label>
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-info float-right ml-2 mt-3" title="Calcular" (click)="pesquisaFiltros()">
@@ -37,8 +44,14 @@
             </div>
           </div>
 
-          <table class="table mt-2 m-2">
+          <table class="table mt-2 m-2" style="min-height: 560px">
+
             <thead>
+              <tr>
+                <th colspan="8" class="text-center" style="font-size: 18px;">
+                    LISTA DE PRODUTOS
+                </th>
+              </tr>
               <tr>
                 <th></th>
                 <th scope="col">Código</th>
@@ -63,7 +76,7 @@
                 <td class="text-right">{{pedido.qtProduto}}</td>
                 <td class="text-right">{{pedido.vlUnitario | currency : 'BRL'}}</td>
               </tr>
-              <tr>
+              <tr style="font-size: 18px;">  
                 <td class="text-right" colspan="6"><b>Total:</b></td>
                 <td class="text-right"> 0,00</td>
               </tr>
@@ -73,7 +86,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 px-5">
+      <div class="col-md-2 px-5">
         <div class="row">
           <div class="col-md-12 box-shadow-produto" style="height: 200px;">
 

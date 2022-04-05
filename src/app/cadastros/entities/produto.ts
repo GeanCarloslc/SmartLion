@@ -1,3 +1,4 @@
+
 export class Produto {
     
     id: string
@@ -7,7 +8,7 @@ export class Produto {
     deCategoria: string
     qtProduto: number
     vlUnitario: number
-    imProduto: string
+    imProduto: File
     dtAtualizacao: Date
 
 }
