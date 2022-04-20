@@ -40,7 +40,6 @@ export class ClienteDetalhesComponent implements OnInit {
   }
 
   salvar() {
-
     this.service.salvarCliente(this.clienteSelecionado).subscribe(resposta => {
 
       if (resposta != null) {

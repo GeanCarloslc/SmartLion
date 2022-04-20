@@ -9,36 +9,39 @@
     <div class="row">
       <div class="col-md-10">
         <div class="row">
-          <div class="col-md-5 form">
-            <input class="col-md-12 textbox" type="text" value={{produtoFiltro.id}}
-              [(ngModel)]="produtoFiltro.id">
+          <div (keyup.enter)="pesquisaProduto()" class="col-md-3 form">
+            <input class="col-md-12 textbox" type="text" value={{codigoProduto}} [(ngModel)]="codigoProduto">
             <label class="pr-2 form-label" style="font-size: 13px;">Código de Barras</label>
           </div>
-    
-          <div class="col-md-2 form">
-            <input class="col-md-12 textbox" type="text" value={{produtoFiltro.qtProduto}}
-              [(ngModel)]="produtoFiltro.qtProduto">
+
+          <div class="col-md-3 form">
+            <input class="col-md-12 textbox pr-2" type="text" value={{produtoSelecionado.deProduto}}
+              [(ngModel)]="produtoSelecionado.deProduto" [disabled]="true">
+            <label class="pr-2 form-label" style="font-size: 13px;">Nome</label>
+          </div>
+
+          <div (keyup.enter)="calculaTotalItem()"  class="col-md-2 form">
+            <input class="col-md-12 textbox" type="text" value={{qtProduto}}
+              [(ngModel)]="qtProduto">
             <label class="pr-2 form-label" style="font-size: 13px;">Quantidade</label>
           </div>
 
           <div class="col-md-2 form">
-            <input class="col-md-12 textbox text-right pr-2" type="number" 
-            value={{produtoFiltro.vlUnitario}}
-              [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
+            <input class="col-md-12 textbox text-right pr-2" type="number" value={{produtoSelecionado.vlUnitario}}
+              [(ngModel)]="produtoSelecionado.vlUnitario" [disabled]="true">
             <label class="pr-2 form-label" style="font-size: 13px;">Valor Unitário</label>
           </div>
-    
-          <div class="col-md-3">
+
+          <div class="col-md-2">
             <div class="row">
               <div class="col-md-9 form">
-                <input class="col-md-12 textbox text-right pr-2" type="number" 
-                value={{produtoFiltro.vlUnitario}}
-                  [(ngModel)]="produtoFiltro.vlUnitario" [disabled]="true">
-                <label class="pr-2 form-label" style="font-size: 13px;">Total do Item</label>
+                <input class="col-md-12 textbox text-right pr-2" type="number" value={{produtoSelecionado.vlTotalProduto}}
+                  [(ngModel)]="produtoSelecionado.vlTotalProduto" [disabled]="true">
+                <label class="pr-2 form-label" style="font-size: 13px;">Total Item</label>
               </div>
               <div class="col-md-3">
-                <button type="button" class="btn btn-info float-right ml-2 mt-3" title="Calcular" (click)="pesquisaFiltros()">
-                  <i class="fas fa-calculator"></i>
+                <button type="button" class="btn btn-success float-right ml-2 mt-3" (click)="incluirProduto()">
+                  <i class="fas fa-plus"></i>
                 </button>
               </div>
             </div>
@@ -49,7 +52,7 @@
             <thead>
               <tr>
                 <th colspan="8" class="text-center" style="font-size: 18px;">
-                    LISTA DE PRODUTOS
+                  LISTA DE PRODUTOS
                 </th>
               </tr>
               <tr>
@@ -58,29 +61,31 @@
                 <th scope="col">Produto</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Marca</th>
-                <th scope="col">Quantidade</th> 
-                <th scope="col">Valor Unitário</th> 
+                <th scope="col">Quantidade</th>
+                <th scope="col">Valor Unitário</th>
+                <th scope="col">Total Item</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let pedido of listaPedidos">
+              <tr *ngFor="let caixaItem of listaCaixaItens">
                 <td>
-                  <button class="btn btn-rounded btn-info" title="Editar" (click)="editarPedido(pedido)">
-                    <i class="fas fa-pen"></i>
+                  <button class="btn btn-rounded btn-danger " title="Remover" (click)="removeItem(caixaItem)">
+                    <i class="far fa-trash-alt"></i>
                   </button>
                 </td>
-                <td>{{pedido.id}}</td>
-                <td>{{pedido.deProduto}}</td>
-                <td>{{pedido.deCategoria}}</td>
-                <td>{{pedido.deMarca}}</td>
-                <td class="text-right">{{pedido.qtProduto}}</td>
-                <td class="text-right">{{pedido.vlUnitario | currency : 'BRL'}}</td>
+                <td>{{caixaItem.idProduto}}</td>
+                <td>{{caixaItem.deProduto}}</td>
+                <td>{{caixaItem.deCategoria}}</td>
+                <td>{{caixaItem.deMarca}}</td>
+                <td class="text-right">{{caixaItem.qtProduto}}</td>
+                <td class="text-right">{{caixaItem.vlUnitario | currency : 'BRL'}}</td>
+                <td class="text-right">{{caixaItem.vlTotalItem | currency : 'BRL'}}</td>
               </tr>
-              <tr style="font-size: 18px;">  
-                <td class="text-right" colspan="6"><b>Total:</b></td>
-                <td class="text-right"> 0,00</td>
+              <tr style="font-size: 18px;">
+                <td class="text-right" colspan="7"><b>Total:</b></td>
+                <td class="text-right">{{vlTotal | currency : 'BRL'}}</td>
               </tr>
-      
+
             </tbody>
           </table>
         </div>
@@ -90,10 +95,21 @@
         <div class="row">
           <div class="col-md-12 box-shadow-produto" style="height: 200px;">
 
-            <!-- Imagem produto -->
-            
+            <img *ngIf="myimage != null" class="w-100 h-100" style="border-radius: 25px;" [src]="myimage | async">
+            <img *ngIf="myimage == null" class="w-100 h-100" style="border-radius: 25px;" src="../../../../assets/images/no-image.jpg" alt="2">
+
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-12" style="margin-top: 370px;">
+            <button type="button" class="btn btn-success float-right mt-3" (click)="finalizaPedidoCaixa()">
+             Finalizar Pedido
+             <i class="fa-solid fa-check"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -103,10 +119,6 @@
     <div class="row">
       <div class="col-md-12 ">
 
-        <button type="button" class="btn btn-success float-right mt-4" (click)="incluirProduto()">
-          <i class="fas fa-plus"></i>
-          
-        </button>
 
       </div>
     </div>

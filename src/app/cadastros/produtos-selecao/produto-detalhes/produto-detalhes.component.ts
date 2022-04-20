@@ -25,11 +25,6 @@ export class ProdutoDetalhesComponent implements OnInit {
 
   //Variaveis
   titulo: string = "Produto Detalhes"
-
-
-  // base64: string = "Base64..."
-  // fileSelected?: Blob
-  // imageUrl: string = ''
   myimage: Observable<any>;
 
   //Mascaras
@@ -96,31 +91,6 @@ export class ProdutoDetalhesComponent implements OnInit {
     this.produtoSelecionado.cdCategoria = cdCategoria;
   }
 
-  // inputFileChange(event){
-
-  //   if(event.target.files && event.target.files[0]){
-  //     const foto = event.target.files[0]
-
-  //     const formData = new FormData()
-  //     formData.append('foto', foto)
-
-  //   }
-
-  // }
-
-  // onSelectNewFile(files: FileList){
-  //   this.fileSelected = files[0]
-  //   this.imageUrl = this.sant.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileSelected)) as string
-
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(this.fileSelected);
-  //   reader.onloadend = function () {
-  //   var base64String = reader.result;
-    
-  //   }
-  // }
-
-  
 
   onChange($event: Event) {
     const file = ($event.target as HTMLInputElement).files[0];
@@ -129,12 +99,8 @@ export class ProdutoDetalhesComponent implements OnInit {
 
   convertToBase64(file: File) {
     this.myimage = new Observable((subscriber: Subscriber<any>) => {
-
         this.readFile(file, subscriber);
-  
-
     });
-
     
   }
 

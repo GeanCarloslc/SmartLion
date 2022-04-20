@@ -8,6 +8,7 @@ export class Produto {
     deCategoria: string
     qtProduto: number
     vlUnitario: number
+    vlTotalProduto: number
     imProduto: File
     dtAtualizacao: Date
 
